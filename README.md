@@ -6,7 +6,7 @@ The project makes use of a CNN model, that has been trained on a dataset that co
 This model is then used to predict if the eyes of user in the frame is in Open or Closed state.
 
 ### Requirements 
-Python ( [version 3.8](https://www.python.org/downloads/release/python-380/) to [version 3.10](https://www.python.org/download/releases/python-3100/) ).
+Python ( [version 3.9](https://www.python.org/downloads/release/python-390/) to [version 3.11](https://www.python.org/download/releases/python-3110/) ).
 
 
 ### Dependencies
