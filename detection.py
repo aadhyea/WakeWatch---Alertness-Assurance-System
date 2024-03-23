@@ -7,10 +7,10 @@ mixer.init()
 sound = mixer.Sound('alarm.wav')
 
 # using haar cascade files we can detect specific features of a face
-face = cv2.CascadeClassifier('Drowsiness detection\Drowsiness detection\haar cascade files\haarcascade_frontalface_alt.xml')
-eye = cv2.CascadeClassifier('Drowsiness detection\Drowsiness detection\haar cascade files\haarcascade_eye.xml')
-l_eye = cv2.CascadeClassifier('Drowsiness detection\Drowsiness detection\haar cascade files\haarcascade_lefteye_2splits.xml')
-r_eye = cv2.CascadeClassifier('Drowsiness detection\Drowsiness detection\haar cascade files\haarcascade_righteye_2splits.xml')
+face = cv2.CascadeClassifier('haar cascade files\haarcascade_frontalface_alt.xml')
+eye = cv2.CascadeClassifier('haar cascade files\haarcascade_eye.xml')
+l_eye = cv2.CascadeClassifier('haar cascade files\haarcascade_lefteye_2splits.xml')
+r_eye = cv2.CascadeClassifier('haar cascade files\haarcascade_righteye_2splits.xml')
 
 labels = ['Closed', 'Open']
 model = load_model('models/cnn_2.h5')
@@ -95,8 +95,7 @@ while(True):
     if(score<0):
         score=0   
     cv2.putText(frame,'Score:'+str(score),(100,height-20), font, 1,(255,255,255),1,cv2.LINE_AA)
-    if(score>10):
-        #person is feeling sleepy so we beep the alarm
+    if(score > 15):
         cv2.imwrite(os.path.join(path,'image.jpg'),frame)
         try:
             sound.play()
@@ -110,7 +109,7 @@ while(True):
                 thickness = 2
         cv2.rectangle(frame,(0,0),(width,height),(0,0,255),thickness)
     cv2.imshow("Frame", frame)          # show enhanced frame
-    if cv2.waitKey(1) & 0xFF == ord('q'): break
+    if cv2.waitKey(1) & 0xFF == ord('z'): break
 cap.release()
 cv2.destroyAllWindows()
         
